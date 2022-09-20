@@ -25,9 +25,14 @@ class MyArray():
     def insert(self,index,item):
         for i in range(self.length, index, -1):
             self.data[i] = self.data[i-1]
-            print(self.data[i])
         self.data[index] = item
         self.length+=1
+
+    def remove(self,index):
+        for i in range(index,self.length-1):
+            self.data[i] = self.data[i+1]
+        del self.data[self.length-1]
+        self.length-=1
 
 
 a = MyArray()
@@ -39,5 +44,8 @@ a.insert(1,5)
 print(a)
 print(a.get(1))
 print(a.pop())
+print(a)
+a.remove(2)
+print(a)
 
 
