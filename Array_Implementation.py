@@ -23,10 +23,14 @@ class MyArray():
         return last_item
 
     def insert(self,index,item):
-        for i in range(self.length, index, -1):
-            self.data[i] = self.data[i-1]
-        self.data[index] = item
-        self.length+=1
+        if index <= self.length:
+            for i in range(self.length, index, -1):
+                self.data[i] = self.data[i-1]
+            self.data[index] = item
+            self.length+=1
+        else:
+            print("Index out of range")
+                
 
     def remove(self,index):
         for i in range(index,self.length-1):
@@ -34,6 +38,12 @@ class MyArray():
         del self.data[self.length-1]
         self.length-=1
 
+    def clear(self):
+        self.length=0
+        self.data=[]
+        return self.data
+
+        
 
 a = MyArray()
 a.push(2)
@@ -47,5 +57,9 @@ print(a.pop())
 print(a)
 a.remove(2)
 print(a)
-
+a.insert(4,8)
+print(a)
+a.insert(3,6)
+print(a)
+print(a.clear())
 
